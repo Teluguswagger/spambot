@@ -1,5 +1,7 @@
 import tweepy
+import os
 from datetime import datetime
+from json import dumps
 
 # Twitter API credentials
 api_key = os.environ.get("TWITTER_API_KEY")
