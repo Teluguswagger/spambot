@@ -15,7 +15,7 @@ api = tweepy.API(auth)
 
 # Tweet text and timing
 tweet_text = "#Pushpa2TheRule Updates ivvandi ra munda\n@MythriOfficial @PushpaMovie @SukumarWritings @imsarathchandra"
-tweet_time = "2024-01-31 16:40:00"  # Format: "YYYY-MM-DD HH:MM:SS"
+tweet_time = "2024-01-31 16:45:00"  # Format: "YYYY-MM-DD HH:MM:SS"
 
 # Convert tweet_time to datetime object
 tweet_datetime = datetime.strptime(tweet_time, "%Y-%m-%d %H:%M:%S")
