@@ -1,29 +1,37 @@
 import tweepy
 import os
-from datetime import datetime
 from json import dumps
 
 # Twitter API credentials
+bearer_key = os.environ.get("TWITTER_BEARER_KEY")
 api_key = os.environ.get("TWITTER_API_KEY")
 api_secret = os.environ.get("TWITTER_API_SECRET")
 access_token = os.environ.get("TWITTER_ACCESS_TOKEN")
 access_token_secret = os.environ.get("TWITTER_ACCESS_TOKEN_SECRET")
 
-# Authenticate to Twitter
-auth = tweepy.OAuth1UserHandler(api_key, api_secret, access_token, access_token_secret)
-api = tweepy.API(auth)
+auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+auth.set_access_token(access_token, access_token_secret)
+api = tweepy.API(auth, wait_on_rate_limit=True)
 
-# Tweet text and timing
-tweet_text = "#Pushpa2TheRule Updates ivvandi ra munda\n@MythriOfficial @PushpaMovie @SukumarWritings @imsarathchandra"
-tweet_time = "2024-01-31 16:45:00"  # Format: "YYYY-MM-DD HH:MM:SS"
+# V2 Twitter API Authentication
+client = tweepy.Client(
+    bearer_key,
+    api_key,
+    api_secret,
+    access_token,
+    access_token_secret,
+    wait_on_rate_limit=True,
+)
 
-# Convert tweet_time to datetime object
-tweet_datetime = datetime.strptime(tweet_time, "%Y-%m-%d %H:%M:%S")
+# Upload image to Twitter. Replace 'filename' your image filename.
+media_id = api.media_upload(filename="your_image.jpg").media_id_string
+print(media_id)
 
-# Check if it's time to tweet
-if datetime.now() >= tweet_datetime:
-    # Send tweet
-    api.update_status(tweet_text)
-    print("Tweeted successfully at:", datetime.now())
-else:
-    print("It's not time to tweet yet.")
+# Text to be Tweeted
+text = ""
+
+# Send Tweet with Text and media ID
+client.create_tweet(text=text, media_ids=[media_id])
+print("Tweeted!")
+
+ "#Pushpa2TheRule Updates ivvandi ra munda\n@MythriOfficial @PushpaMovie @SukumarWritings @imsarathchandra"
