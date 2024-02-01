@@ -24,14 +24,12 @@ client = tweepy.Client(
 )
 
 # Upload image to Twitter. Replace 'filename' your image filename.
-media_id = api.media_upload(filename="your_image.jpg").media_id_string
+media_id = api.media_upload(filename="twitter_image.jpg").media_id_string
 print(media_id)
 
 # Text to be Tweeted
-text = ""
+text = "#Pushpa2TheRule Updates ivvandi ra munda\n@MythriOfficial @PushpaMovie @SukumarWritings @imsarathchandra"
 
 # Send Tweet with Text and media ID
 client.create_tweet(text=text, media_ids=[media_id])
 print("Tweeted!")
-
- "#Pushpa2TheRule Updates ivvandi ra munda\n@MythriOfficial @PushpaMovie @SukumarWritings @imsarathchandra"
