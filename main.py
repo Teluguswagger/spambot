@@ -28,7 +28,7 @@ media_id = api.media_upload(filename="twitter_image.jpg").media_id_string
 print(media_id)
 
 # Text to be Tweeted
-text = "#Pushpa2TheRule Updates ivvandi ra munda\n@MythriOfficial @PushpaMovie @SukumarWritings @imsarathchandra"
+text = "#Pushpa2TheRule Updates ivvandi ra munda\n\n@MythriOfficial @PushpaMovie @SukumarWritings @imsarathchandra"
 
 # Send Tweet with Text and media ID
 client.create_tweet(text=text, media_ids=[media_id])
